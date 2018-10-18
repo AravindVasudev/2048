@@ -69,14 +69,14 @@ main {
     flex-direction: column;
 
     .row {
-        flex-grow: 1;
+        flex: 1;
         width: 100%;
 
         display: flex;
     }
 
     .col {
-        flex-grow: 1;
+        flex: 1;
 
         box-sizing: border-box;
         border: 7px solid #B9AE9D;
@@ -84,6 +84,58 @@ main {
         background: #CCC2B1;
 
         font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+        font-size: 3em;
+        font-weight: bolder;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .two {
+        background: #eee4da;
+    }
+
+    .four {
+        background: #eee1c9;
+    }
+
+    .eight {
+        background: #f3b27a;
+    }
+
+    .sixteen {
+        background: #f69664;
+    }
+
+    .thirty-two {
+        background: #f77c5f;
+    }
+
+    .sixty-four {
+        background: #f75f3b;
+    }
+
+    .one-twenty-eight {
+        background: #edd073;
+    }
+
+    .two-fifty-six {
+        background: #edcc62;
+    }
+
+    .five-twelve {
+        background: #edc950;
+    }
+
+    .thousand-twenty-four {
+        background: #edc53f;
+        font-size: 2em;
+    }
+
+    .two-thousand-fourty-eight {
+        background: #edc22e;
+        font-size: 2em;
     }
 }
 
@@ -93,10 +145,10 @@ main {
     
     font-family: monospace;
     font-size: 3vw;
-}
 
-.btn:active {
-    background: #B9AE9D;
+    &:active {
+        background: #000;
+    }
 }
 
 @media only screen and (max-width: 500px) {
@@ -107,5 +159,13 @@ main {
     main {
         height: 100vw;
         width: 100vw;
+
+        .one-twenty-eight, .two-fifty-six, .five-twelve {   
+            font-size: 2em;
+        }
+
+        .thousand-twenty-four, .two-thousand-fourty-eight {
+            font-size: 1em;
+        }
     }
 }

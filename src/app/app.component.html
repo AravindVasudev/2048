@@ -1,13 +1,25 @@
-<div class="container">
+<div class="container"ss>
   <header>
     <h1 class="animated bounceInUp">2048!</h1>
     <div id="score">0</div>
     <button id="bot" class="btn">BOT</button>
-    <button id="new" class="btn">NEW</button>
+    <button id="new" class="btn" (click)="game.reset()">NEW</button>
   </header>
   <main>
-      <div class="row" *ngFor="let row of board; let i = index">
-          <div class="col" *ngFor="let cell of row; let j = index">
+      <div class="row" *ngFor="let row of game.board; let i = index">
+          <div class="col" *ngFor="let cell of row; let j = index"
+          [ngClass]="{
+            'two': cell === 2,
+            'four': cell === 4,
+            'eight': cell === 8,
+            'sixteen': cell === 16,
+            'thirty-two': cell === 32,
+            'sixty-four': cell === 64,
+            'one-twenty-eight': cell === 128,
+            'two-fifty-six': cell === 256,
+            'five-twelve': cell === 512,
+            'thousand-twenty-four': cell === 1024,
+            'two-thousand-fourty-eight': cell === 2048}">
             {{ cell === 0 ? "" : cell }}
           </div>
       </div>

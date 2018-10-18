@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { Game } from './game';
 
 @Component({
   selector: 'app-root',
@@ -6,19 +7,33 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  board: number[][];
-  empty = 0;
+  game: Game;
 
   constructor() {
-    // Init board
-    this.fillBoard(4, 2);
+    // Init Game
+    this.game = new Game();
   }
 
-  // create a empty board of specified dimension
-  fillBoard(dimension: number, value = this.empty): void {
-    this.board = new Array(dimension);
-    for (let i = 0; i < dimension; i++) {
-      this.board[i] = new Array(dimension).fill(value);
-    }
+  @HostListener('window:keydown.arrowup', ['$event'])
+  slideUp(event: any) {
+    console.log(event);
   }
+
+  @HostListener('window:keydown.arrowdown', ['$event'])
+  slideDown(event: any) {
+    console.log(event);
+  }
+
+  @HostListener('window:keydown.arrowleft', ['$event'])
+  slideLeft(event: any) {
+    console.log(event);
+  }
+
+  @HostListener('window:keydown.arrowright', ['$event'])
+  slideRight(event: any) {
+    console.log(event);
+  }
+
+
+
 }
