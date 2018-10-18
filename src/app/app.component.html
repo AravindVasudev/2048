@@ -1,12 +1,16 @@
-<div id="app">
-  <div id="score-container"></div>
-  <div id="board">
-    <div class="row" *ngFor="let row of board; let i = index">
-      <div class="col" *ngFor="let cell of row; let j = index">
-        {{ cell }}
+<div class="container">
+  <header>
+    <h1 class="animated bounceInUp">2048!</h1>
+    <div id="score">0</div>
+    <button id="bot" class="btn">BOT</button>
+    <button id="new" class="btn">NEW</button>
+  </header>
+  <main>
+      <div class="row" *ngFor="let row of board; let i = index">
+          <div class="col" *ngFor="let cell of row; let j = index">
+            {{ cell === 0 ? "" : cell }}
+          </div>
       </div>
-    </div>
-  </div>
-  <div id="bot-button"></div>
+  </main>
 </div>
 

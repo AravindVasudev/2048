@@ -11,7 +11,7 @@ export class AppComponent {
 
   constructor() {
     // Init board
-    this.fillBoard(4);
+    this.fillBoard(4, 2);
   }
 
   // create a empty board of specified dimension

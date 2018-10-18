@@ -1,14 +1,111 @@
 @import '../constants';
 
-#app {
+.container {
     //Size
+    box-sizing: border-box;
+
     height: 100%;
-    width: 100%;
+    max-width: 500px;
 
     //Alignment
-    
+    margin: 0 auto;
+    padding-top: 5%;
 }
 
-#board {
+header {
+    height: 20%;
+    width: 100%;
 
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    grid-template-areas:
+        "title title title score"
+        "bot bot bot new";
+
+    h1 {
+        grid-area: title;
+
+        margin: 0;
+        float: left;
+
+        font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+        font-size: 80px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #score {
+        grid-area: score;
+
+        font-family: monospace;
+        font-size: 50px;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    #bot {
+        grid-area: bot;
+    }
+
+    #new {
+        grid-area: new;
+    }
+}
+
+main {
+    box-sizing: border-box;
+    
+    height: 500px;
+    width: 100%;
+
+    border: 7px solid #B9AE9D;
+
+    display: flex;
+    flex-direction: column;
+
+    .row {
+        flex-grow: 1;
+        width: 100%;
+
+        display: flex;
+    }
+
+    .col {
+        flex-grow: 1;
+
+        box-sizing: border-box;
+        border: 7px solid #B9AE9D;
+
+        background: #CCC2B1;
+
+        font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+    }
+}
+
+.btn {
+    background: transparent;
+    border: 5px solid #042030;
+    
+    font-family: monospace;
+    font-size: 3vw;
+}
+
+.btn:active {
+    background: #B9AE9D;
+}
+
+@media only screen and (max-width: 500px) {
+    .container {
+        padding: 0;
+    }
+
+    main {
+        height: 100vw;
+        width: 100vw;
+    }
 }
