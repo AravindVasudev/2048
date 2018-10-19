@@ -1,5 +1,6 @@
 import { Component, HostListener, OnChanges, SimpleChanges} from '@angular/core';
 import { Game } from './game';
+import { Bot } from './bot';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +9,15 @@ import { Game } from './game';
 })
 export class AppComponent {
   game: Game;
+  bot: Bot;
   title = "2048!";
 
   constructor() {
     // Init Game
     this.game = new Game();
+
+    // Init Bot
+    this.bot = new Bot(this.game);
   }
 
   updateState() {
