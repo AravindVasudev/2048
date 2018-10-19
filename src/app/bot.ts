@@ -1,13 +1,14 @@
 import { Game } from './game';
+import { AppComponent } from './app.component';
 
 export class Bot {
-    game: Game;
+    app: AppComponent;
     active = false;
     botLoop: any;
     speed = 5;
 
-    constructor(game: Game) {
-        this.game = game;
+    constructor(app: AppComponent) {
+        this.app = app;
     }
 
     play(): void {
@@ -23,16 +24,16 @@ export class Bot {
     move(): void {
         switch (Math.floor(Math.random() * 4)) {
             case 1:
-                this.game.slideLeft();
+                this.app.slideLeft(null);
                 break;
             case 2:
-                this.game.slideRight();
+                this.app.slideRight(null);
                 break;
             case 3:
-                this.game.slideUp();
+                this.app.slideUp(null);
                 break;
             case 4:
-                this.game.slideDown();
+                this.app.slideDown(null);
                 break;
         }
     }

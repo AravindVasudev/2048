@@ -17,7 +17,7 @@ export class AppComponent {
     this.game = new Game();
 
     // Init Bot
-    this.bot = new Bot(this.game);
+    this.bot = new Bot(this);
   }
 
   updateState() {
