@@ -16,24 +16,21 @@ export class AppComponent {
 
   @HostListener('window:keydown.arrowup', ['$event'])
   slideUp(event: any) {
-    console.log(event);
+    this.game.slideUp();
   }
 
   @HostListener('window:keydown.arrowdown', ['$event'])
   slideDown(event: any) {
-    console.log(event);
+    this.game.slideDown();
   }
 
   @HostListener('window:keydown.arrowleft', ['$event'])
   slideLeft(event: any) {
-    console.log(event);
+    this.game.slideLeft();
   }
 
   @HostListener('window:keydown.arrowright', ['$event'])
   slideRight(event: any) {
-    console.log(event);
+    this.game.slideRight();
   }
-
-
-
 }
