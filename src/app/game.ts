@@ -4,6 +4,7 @@ export class Game {
     dimension = 4;
     score = 0;
     gameOver = false;
+    winningTile = 2048;
 
     constructor() {
         // Init game
@@ -240,5 +241,48 @@ export class Game {
             this._moveDown();
             this.putRandomPiece();
         }
+      }
+
+      hasWon(): boolean {
+          for (let i = 0; i < this.board.length; i++) {
+              for (let j = 0; j < this.board.length; j++) {
+                  if (this.board[i][j] === this.winningTile) {
+                    return true;
+                  }
+              }
+          }
+
+          return false;
+      }
+
+      isGameOver(): boolean {
+        for (let i = 0; i < this.board.length; i++) {
+            for (let j = 0; j < this.board.length; j++) {
+                if (this.board[i][j] === this.empty ||
+                    (i > 0 && this.board[i][j] === this.board[i - 1][j]) || 
+                    (i < this.board.length - 1 && this.board[i][j] === this.board[i + 1][j]) ||
+                    (j > 0 && this.board[i][j] === this.board[i][j - 1]) || 
+                    (j < this.board.length - 1 && this.board[i][j] === this.board[i][j + 1])) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+      }
+
+      // 1  -> won
+      // 0  -> going on
+      // -1 -> lost
+      getState(): number {
+        if (this.hasWon()) {
+            return 1;
+        }
+
+        if (this.isGameOver()) {
+            return -1;
+        }
+
+        return 0;
       }
 }
