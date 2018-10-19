@@ -43,15 +43,15 @@ export class Game {
       }
 
       reset(): void {
-          // Reinit board
-          this.fillBoard();
+        // Reinit board
+        this.fillBoard();
 
         // Add two blocks at random
         this.putRandomPiece();
         this.putRandomPiece();
 
-          // clear score
-          this.score = 0;
+        // clear score
+        this.score = 0;
       }
 
       _moveLeftEach(row: number, col: number): void {
@@ -83,6 +83,8 @@ export class Game {
                 if (this.board[i][j] === this.board[i][j - 1]) {
                     this.board[i][j] *= 2;
                     this.board[i][j - 1] = 0;
+
+                    this.score += this.board[i][j];
                 }
             }
         }
@@ -128,6 +130,8 @@ export class Game {
                 if (this.board[i][j] === this.board[i][j + 1]) {
                     this.board[i][j] *= 2;
                     this.board[i][j + 1] = 0;
+
+                    this.score += this.board[i][j];
                 }
             }
         }
@@ -173,6 +177,8 @@ export class Game {
                 if (this.board[i][j] === this.board[i + 1][j]) {
                     this.board[i][j] *= 2;
                     this.board[i + 1][j] = 0;
+
+                    this.score += this.board[i][j];
                 }
             }
         }
@@ -218,6 +224,8 @@ export class Game {
                 if (this.board[i][j] === this.board[i - 1][j]) {
                     this.board[i][j] *= 2;
                     this.board[i - 1][j] = 0;
+
+                    this.score += this.board[i][j];
                 }
             }
         }
