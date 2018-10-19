@@ -79,10 +79,10 @@ export class Game {
 
       _combineLeft(): void {
         for (let i = 0; i < this.board.length; i++) {
-            for (let j = this.board.length - 1; j > 0; j--) {
-                if (this.board[i][j] === this.board[i][j - 1]) {
+            for (let j = 0; j < this.board.length - 1; j++) {
+                if (this.board[i][j] === this.board[i][j + 1]) {
                     this.board[i][j] *= 2;
-                    this.board[i][j - 1] = 0;
+                    this.board[i][j + 1] = 0;
 
                     this.score += this.board[i][j];
                 }
@@ -126,10 +126,10 @@ export class Game {
 
       _combineRight(): void {
         for (let i = 0; i < this.board.length; i++) {
-            for (let j = 0; j < this.board.length - 1; j++) {
-                if (this.board[i][j] === this.board[i][j + 1]) {
+            for (let j = this.board.length - 1; j > 0; j--) {
+                if (this.board[i][j] === this.board[i][j - 1]) {
                     this.board[i][j] *= 2;
-                    this.board[i][j + 1] = 0;
+                    this.board[i][j - 1] = 0;
 
                     this.score += this.board[i][j];
                 }
