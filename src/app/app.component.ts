@@ -30,29 +30,35 @@ export class AppComponent {
     if (state === 0) {
       this.title = "2048!";
     }
+
+    return state;
   }
 
   @HostListener('window:keydown.arrowup', ['$event'])
   slideUp(event: any) {
-    this.game.slideUp();
-    this.updateState();
+    if (this.updateState() === 0) {
+      this.game.slideUp();
+    }
   }
 
   @HostListener('window:keydown.arrowdown', ['$event'])
   slideDown(event: any) {
-    this.game.slideDown();
-    this.updateState();
+    if (this.updateState() === 0) {
+      this.game.slideDown();
+    }
   }
 
   @HostListener('window:keydown.arrowleft', ['$event'])
   slideLeft(event: any) {
-    this.game.slideLeft();
-    this.updateState();
+    if (this.updateState() === 0) {
+      this.game.slideLeft();
+    }
   }
 
   @HostListener('window:keydown.arrowright', ['$event'])
   slideRight(event: any) {
-    this.game.slideRight();
-    this.updateState();
+    if (this.updateState() === 0) {
+      this.game.slideRight();
+    }
   }
 }
