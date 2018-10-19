@@ -5,7 +5,7 @@
     <button id="bot" class="btn">BOT</button>
     <button id="new" class="btn" (click)="game.reset()">NEW</button>
   </header>
-  <main>
+  <main (swipeleft)="slideLeft($event)" (swiperight)="slideRight($event)" (swipeup)="slideUp($event)" (swipedown)="slideDown($event)">
       <div class="row" *ngFor="let row of game.board; let i = index">
           <div class="col" *ngFor="let cell of row; let j = index"
           [ngClass]="{
