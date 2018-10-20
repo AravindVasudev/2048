@@ -33,6 +33,9 @@ export class Bot {
         for (let i = 0; i < board.length; i++) {
             for (let j = 0; j < board.length; j++) {
                 score += board[i][j] * this.heuristicMatrix[i][j];
+                if (board[i][j] === this.app.game.empty) {
+                    score += 10;
+                }
             }
         }
 
