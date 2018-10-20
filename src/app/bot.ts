@@ -5,14 +5,14 @@ export class Bot {
     app: AppComponent;
     active = false;
     botLoop: any;
-    speed = 5;
+    speed = 1000;
     depth = 5;
     botPlayer = 0;
     boardPlayer = 1;
-    heuristicMatrix = [[10, 8, 7, 6],
-                       [8, 7, 6, 5],
-                       [7, 6, 5, 4],
-                       [6, 5, 4, 2]];
+    heuristicMatrix = [[20, 6, 5, 4],
+                       [6, 5, 4, 2],
+                       [5, 4, 3, 2],
+                       [4, 3, 2, 1]];
 
     constructor(app: AppComponent) {
         this.app = app;
@@ -30,16 +30,17 @@ export class Bot {
 
     computeFitness(board: number[][]) {
         let score = 0;
+        let freeSpace = 0;
         for (let i = 0; i < board.length; i++) {
             for (let j = 0; j < board.length; j++) {
                 score += board[i][j] * this.heuristicMatrix[i][j];
                 if (board[i][j] === this.app.game.empty) {
-                    score += 10;
+                    freeSpace++;
                 }
             }
         }
 
-        return score;
+        return score + (freeSpace * 2);
     }
 
     areBoardsEqual(board1: number[][], board2: number[][]): boolean {
@@ -58,6 +59,10 @@ export class Bot {
 
         if (game.isGameOver() || (prevGame !== null && this.areBoardsEqual(game.board, prevGame.board))) {
             return [-9999 / depth, dir];
+        }
+
+        if (game.hasWon()) {
+            return [10000 / depth, dir];
         }
 
         if (player === this.boardPlayer) {
