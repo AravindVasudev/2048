@@ -42,28 +42,28 @@ export class AppComponent {
   @HostListener('window:keydown.arrowup', ['$event'])
   slideUp(event: any) {
     if (this.updateState() === 0) {
-      this.game.slideUp();
+      this.game.slideUp(false);
     }
   }
 
   @HostListener('window:keydown.arrowdown', ['$event'])
   slideDown(event: any) {
     if (this.updateState() === 0) {
-      this.game.slideDown();
+      this.game.slideDown(false);
     }
   }
 
   @HostListener('window:keydown.arrowleft', ['$event'])
   slideLeft(event: any) {
     if (this.updateState() === 0) {
-      this.game.slideLeft();
+      this.game.slideLeft(false);
     }
   }
 
   @HostListener('window:keydown.arrowright', ['$event'])
   slideRight(event: any) {
     if (this.updateState() === 0) {
-      this.game.slideRight();
+      this.game.slideRight(false);
     }
   }
 }

@@ -11,6 +11,11 @@ export class Game {
         this.reset();
     }
 
+    useBoard(board: number[][]): Game {
+        this.board = JSON.parse(JSON.stringify(board));
+        return this;
+    }
+
     // create a empty board of specified dimension
     fillBoard(dimension: number = this.dimension, value = this.empty): void {
         this.board = new Array(dimension);
@@ -91,14 +96,14 @@ export class Game {
         }
       }
 
-      slideLeft(): void {
+      slideLeft(bot: boolean): void {
         let old = JSON.stringify(this.board);
         this._moveLeft();
         this._combineLeft();
 
         if (JSON.stringify(this.board) !== old) {
             this._moveLeft();
-            this.putRandomPiece();
+            !bot && this.putRandomPiece();
         }
       }
 
@@ -138,14 +143,14 @@ export class Game {
         }
       }
 
-      slideRight(): void {
+      slideRight(bot: boolean): void {
         let old = JSON.stringify(this.board);
         this._moveRight();
         this._combineRight();
 
         if (JSON.stringify(this.board) !== old) {
             this._moveRight();
-            this.putRandomPiece();
+            !bot && this.putRandomPiece();
         }
       }
 
@@ -185,14 +190,14 @@ export class Game {
         }
       }
 
-      slideUp(): void {
+      slideUp(bot: boolean): void {
         let old = JSON.stringify(this.board);
         this._moveUp();
         this._combineUp();
 
         if (JSON.stringify(this.board) !== old) {
             this._moveUp();
-            this.putRandomPiece();
+            !bot && this.putRandomPiece();
         }
       }
 
@@ -232,14 +237,14 @@ export class Game {
         }
       }
 
-      slideDown(): void {
+      slideDown(bot: boolean): void {
         let old = JSON.stringify(this.board);
         this._moveDown();
         this._combineDown();
 
         if (JSON.stringify(this.board) !== old) {
             this._moveDown();
-            this.putRandomPiece();
+            !bot && this.putRandomPiece();
         }
       }
 
