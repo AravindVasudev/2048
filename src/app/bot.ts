@@ -5,7 +5,7 @@ export class Bot {
     app: AppComponent;
     active = false;
     botLoop: any;
-    speed = 5;
+    speed = 0;
     depth = 5;
     botPlayer = 0;
     boardPlayer = 1;
@@ -40,7 +40,7 @@ export class Bot {
             }
         }
 
-        return score; //+ freeSpace;
+        return score + freeSpace;
     }
 
     areBoardsEqual(board1: number[][], board2: number[][]): boolean {
@@ -112,7 +112,7 @@ export class Bot {
     move(): void {
         // debugger;
         let maxMove = this.expectimax(this.app.game);
-        console.log(maxMove);
+        // console.log(maxMove);
 
         switch (maxMove[1]) {
             case 0:

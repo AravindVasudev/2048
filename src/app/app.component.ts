@@ -22,7 +22,7 @@ export class AppComponent {
 
   updateState() {
     let state = this.game.getState();
-    console.log(state);
+    // console.log(state);
 
     if (state === 1) {
       this.title = "Won!";
