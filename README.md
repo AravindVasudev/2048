@@ -1,8 +1,8 @@
 [![2048](./2048.png)](./2048.mp4)
 
 # 2048 with Bot
-An implementation of the game [2048 by Gabriele Cirulli](https://gabrielecirulli.github.io/2048/) using Angular 6. This 
-implementation comes along with a AI solver built using expectimax algorithm with a depth limit of 5 and a simple heuristic function.
+A clone of the game [2048 by Gabriele Cirulli](https://gabrielecirulli.github.io/2048/) using Angular 6. This 
+implementation comes along with an AI solver built using expectimax algorithm with a depth limit of 5 and a simple heuristic function.
 
 ## Demo
 Watch the working of the bot [here](./2048.mp4).
