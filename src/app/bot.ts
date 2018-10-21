@@ -5,11 +5,11 @@ export class Bot {
     app: AppComponent;
     active = false;
     botLoop: any;
-    speed = 1000;
+    speed = 5;
     depth = 5;
     botPlayer = 0;
     boardPlayer = 1;
-    heuristicMatrix = [[20, 6, 5, 4],
+    heuristicMatrix = [[7, 6, 5, 4],
                        [6, 5, 4, 2],
                        [5, 4, 3, 2],
                        [4, 3, 2, 1]];
@@ -40,7 +40,7 @@ export class Bot {
             }
         }
 
-        return score + (freeSpace * 2);
+        return score; //+ freeSpace;
     }
 
     areBoardsEqual(board1: number[][], board2: number[][]): boolean {
@@ -72,7 +72,7 @@ export class Bot {
             for (let i = 0; i < game.board.length; i++) {
                 for (let j = 0; j < game.board.length; j++) {
                     if (game.board[i][j] === game.empty) {
-                        let newGame = new Game().useBoard(this.app.game.board);
+                        let newGame = new Game().useBoard(game.board);
 
                         newGame.board[i][j] = 2;
                         score += 0.9 * this.expectimax(newGame, game, dir, this.botPlayer, depth - 1)[0];
@@ -89,7 +89,7 @@ export class Bot {
         } else {
             let newGames: Game[] = [];
             for (let i = 0; i < 4; i++) {
-                newGames.push(new Game().useBoard(this.app.game.board));
+                newGames.push(new Game().useBoard(game.board));
             }
 
             newGames[0].slideLeft(true);
@@ -112,7 +112,6 @@ export class Bot {
     move(): void {
         // debugger;
         let maxMove = this.expectimax(this.app.game);
-
         console.log(maxMove);
 
         switch (maxMove[1]) {
