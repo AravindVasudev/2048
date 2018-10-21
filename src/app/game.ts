@@ -11,6 +11,7 @@ export class Game {
         this.reset();
     }
 
+    // updates the game board with the given board
     useBoard(board: number[][]): Game {
         this.board = JSON.parse(JSON.stringify(board));
         return this;
@@ -48,6 +49,7 @@ export class Game {
         }        
       }
 
+      // resets the game
       reset(): void {
         // Reinit board
         this.fillBoard();
@@ -96,6 +98,8 @@ export class Game {
         }
       }
 
+      // slides all pieces to the left
+      // bot param is used to determine whether to put a random piece or not
       slideLeft(bot: boolean): void {
         let old = JSON.stringify(this.board);
         this._moveLeft();
@@ -143,6 +147,8 @@ export class Game {
         }
       }
 
+      // slides all pieces to the right
+      // bot param is used to determine whether to put a random piece or not
       slideRight(bot: boolean): void {
         let old = JSON.stringify(this.board);
         this._moveRight();
@@ -190,6 +196,8 @@ export class Game {
         }
       }
 
+       // slides up all pieces
+      // bot param is used to determine whether to put a random piece or not
       slideUp(bot: boolean): void {
         let old = JSON.stringify(this.board);
         this._moveUp();
@@ -237,6 +245,8 @@ export class Game {
         }
       }
 
+       // slides down all pieces
+      // bot param is used to determine whether to put a random piece or not
       slideDown(bot: boolean): void {
         let old = JSON.stringify(this.board);
         this._moveDown();
@@ -248,6 +258,7 @@ export class Game {
         }
       }
 
+      // returns true if the board has 2048 tile
       hasWon(): boolean {
           for (let i = 0; i < this.board.length; i++) {
               for (let j = 0; j < this.board.length; j++) {
@@ -260,6 +271,7 @@ export class Game {
           return false;
       }
 
+      // returns true if there is no possible move left
       isGameOver(): boolean {
         for (let i = 0; i < this.board.length; i++) {
             for (let j = 0; j < this.board.length; j++) {

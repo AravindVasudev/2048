@@ -18,6 +18,7 @@ export class Bot {
         this.app = app;
     }
 
+    // toggles the bot
     play(): void {
         if (this.active) {
             this.active = false;
@@ -28,6 +29,8 @@ export class Bot {
         }
     }
 
+    // computes fitness for a given board
+    // uses top-left corner as heuristics and adds extra points for freespace
     computeFitness(board: number[][]) {
         let score = 0;
         let freeSpace = 0;
@@ -43,6 +46,7 @@ export class Bot {
         return score + freeSpace;
     }
 
+    // compares two given boards
     areBoardsEqual(board1: number[][], board2: number[][]): boolean {
         return JSON.stringify(board1) === JSON.stringify(board2);
     }
@@ -53,19 +57,21 @@ export class Bot {
     // 2 -> up
     // 3 -> down
     expectimax(game: Game, prevGame: Game = null, dir: number = -1, player = this.botPlayer, depth = this.depth): [number, number] {
-        if (depth <= 0) {
+        if (depth <= 0) { // if depth limit reached
             return [this.computeFitness(game.board), dir];
         }
 
+        // if no moves left in current direction
         if (game.isGameOver() || (prevGame !== null && this.areBoardsEqual(game.board, prevGame.board))) {
             return [-9999 / depth, dir];
         }
 
+        // if 2048 is formed
         if (game.hasWon()) {
             return [10000 / depth, dir];
         }
 
-        if (player === this.boardPlayer) {
+        if (player === this.boardPlayer) { // Chance player a.k.a the board
             let score = 0;
             let numEmpty = 0;
 
@@ -86,7 +92,7 @@ export class Bot {
             }
 
             return [score / numEmpty, dir];
-        } else {
+        } else { // max player a.k.a the bot
             let newGames: Game[] = [];
             for (let i = 0; i < 4; i++) {
                 newGames.push(new Game().useBoard(game.board));
@@ -109,10 +115,9 @@ export class Bot {
         }
     }
 
+    // computes the next move and makes it
     move(): void {
-        // debugger;
         let maxMove = this.expectimax(this.app.game);
-        // console.log(maxMove);
 
         switch (maxMove[1]) {
             case 0:

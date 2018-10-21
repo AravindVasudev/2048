@@ -20,9 +20,9 @@ export class AppComponent {
     this.bot = new Bot(this);
   }
 
+  // Updates the game state to title
   updateState() {
     let state = this.game.getState();
-    // console.log(state);
 
     if (state === 1) {
       this.title = "Won!";
